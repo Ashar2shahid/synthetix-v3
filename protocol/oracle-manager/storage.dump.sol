@@ -58,6 +58,11 @@ contract PythStructs {
     }
 }
 
+// @custom:artifact contracts/nodes/Api3Node.sol:Api3Node
+library Api3Node {
+    int256 public constant PRECISION = 18;
+}
+
 // @custom:artifact contracts/nodes/ChainlinkNode.sol:ChainlinkNode
 library ChainlinkNode {
     uint256 public constant PRECISION = 18;
@@ -97,7 +102,8 @@ library NodeDefinition {
         PYTH,
         PRICE_DEVIATION_CIRCUIT_BREAKER,
         STALENESS_CIRCUIT_BREAKER,
-        CONSTANT
+        CONSTANT,
+        API3
     }
     struct Data {
         NodeType nodeType;

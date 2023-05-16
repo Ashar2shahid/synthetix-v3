@@ -4,6 +4,7 @@ pragma solidity >=0.8.11 <0.9.0;
 import "../interfaces/INodeModule.sol";
 import "../nodes/ReducerNode.sol";
 import "../nodes/ExternalNode.sol";
+import "../nodes/Api3Node.sol";
 import "../nodes/PythNode.sol";
 import "../nodes/ChainlinkNode.sol";
 import "../nodes/PriceDeviationCircuitBreakerNode.sol";
@@ -156,6 +157,8 @@ contract NodeModule is INodeModule {
             return UniswapNode.process(nodeDefinition.parameters);
         } else if (nodeDefinition.nodeType == NodeDefinition.NodeType.PYTH) {
             return PythNode.process(nodeDefinition.parameters);
+        } else if (nodeDefinition.nodeType == NodeDefinition.NodeType.API3) {
+            return Api3Node.process(nodeDefinition.parameters);
         } else if (
             nodeDefinition.nodeType == NodeDefinition.NodeType.PRICE_DEVIATION_CIRCUIT_BREAKER
         ) {
@@ -201,6 +204,8 @@ contract NodeModule is INodeModule {
             return UniswapNode.isValid(nodeDefinition);
         } else if (nodeDefinition.nodeType == NodeDefinition.NodeType.PYTH) {
             return PythNode.isValid(nodeDefinition);
+        } else if (nodeDefinition.nodeType == NodeDefinition.NodeType.API3) {
+            return Api3Node.isValid(nodeDefinition);
         } else if (
             nodeDefinition.nodeType == NodeDefinition.NodeType.PRICE_DEVIATION_CIRCUIT_BREAKER
         ) {
